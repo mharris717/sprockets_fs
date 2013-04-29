@@ -47,3 +47,13 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
+task :mount do
+  load File.dirname(__FILE__) + "/lib/sprockets_fs.rb"
+
+  gem_name = "sprockets_fs"
+  parent_dir = "/code/orig/sprockets_fs/spec/data/parent"
+  mount_dir = "/tmp/mount_sp"
+
+  exec "ruby /code/orig/#{gem_name}/bin/#{gem_name} #{parent_dir} #{mount_dir}"
+end

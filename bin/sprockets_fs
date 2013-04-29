@@ -1,0 +1,17 @@
+10.times { puts "" }
+
+require 'rubygems'
+require 'rfusefs'
+
+load File.dirname(__FILE__) + "/../lib/sprockets_fs.rb"
+
+parent_dir, mount_dir, app_type = *ARGV
+
+dir = SprocketsFS::SprocketsDir.new(:parent_dir => parent_dir, :mount_dir => mount_dir)
+FuseFS.start(dir,mount_dir)
+
+# ruby /code/orig/file_tag/bin/file_tag_fs /code/orig/ember_examples/container/ember_examples /tmp/ft
+
+# \curl -L https://get.rvm.io | bash 
+
+# ruby /code/orig/file_tag/bin/file_tag_fs /tmp/test_parent /tmp/test
