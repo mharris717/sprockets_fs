@@ -18,5 +18,11 @@ gem 'lre'
 gem 'guard'
 gem 'activesupport'
 gem 'rfusefs'
-gem 'sprockets'
+
 gem 'coffee-script'
+gem 'therubyracer'
+
+gem 'mongo'
+gem 'bson_ext'
+
+gem 'sprockets','2.2.2', :path => '/mnt/hgfs/Code/read/sprockets'

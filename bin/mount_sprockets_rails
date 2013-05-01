@@ -1,0 +1,27 @@
+if ARGV.first == 'r'
+  load File.dirname(__FILE__) + "/../lib/sprockets_fs.rb"
+
+  parent_dir = File.expand_path(".")
+  mount_dir = "#{parent_dir}/asset_fs"
+
+  puts "parent is #{parent_dir}"
+
+  FileUtils.mkdir(mount_dir) unless FileTest.exist?(mount_dir)
+
+  app_name = parent_dir.split("/").last.split("_").map do |w|
+    w[0..0].upcase + w[1..-1]
+  end.join("")
+
+  app_name = File.read("#{parent_dir}/config/environment.rb").scan(/([a-z]+)::Application/i).flatten.first
+
+  env = eval(app_name)::Application.assets
+  dir = SprocketsFS::SprocketsDir.new(:parent_dir => "#{parent_dir}/app/assets", :env => env, :mount_dir => mount_dir)
+
+  FuseFS.start(dir,mount_dir)
+else
+  here = File.expand_path(__FILE__)
+  puts "exec"
+  cmd = "rails runner #{here} r"
+  puts cmd
+  exec cmd
+end
