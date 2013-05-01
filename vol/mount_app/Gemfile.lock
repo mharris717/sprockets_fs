@@ -1,12 +1,3 @@
-PATH
-  remote: /mnt/hgfs/Code/read/sprockets
-  specs:
-    sprockets (2.2.2)
-      hike (~> 1.2)
-      multi_json (~> 1.0)
-      rack (~> 1.0)
-      tilt (~> 1.1, != 1.3.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -38,11 +29,7 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     arel (3.0.2)
-    bson (1.8.5)
-    bson_ext (1.8.5)
-      bson (~> 1.8.5)
     builder (3.0.4)
-    coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -55,14 +42,6 @@ GEM
       multi_json (~> 1.0)
     facets (2.9.3)
     fattr (2.2.1)
-    ffi (1.8.1)
-    formatador (0.2.4)
-    guard (1.8.0)
-      formatador (>= 0.2.4)
-      listen (>= 1.0.0)
-      lumberjack (>= 1.0.2)
-      pry (>= 0.9.10)
-      thor (>= 0.14.6)
     hike (1.2.2)
     i18n (0.6.1)
     journey (1.0.4)
@@ -71,32 +50,16 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.7.7)
     libv8 (3.11.8.17)
-    listen (1.0.3)
-      rb-fsevent (>= 0.9.3)
-      rb-inotify (>= 0.9)
-      rb-kqueue (>= 0.2)
-    lre (0.3.0)
-      fattr
-      mharris_ext
-      watchr
-    lumberjack (1.0.3)
     mail (2.5.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    method_source (0.8.1)
     mharris_ext (1.7.0)
       facets
       fattr
     mime-types (1.23)
-    mongo (1.8.5)
-      bson (~> 1.8.5)
     multi_json (1.7.2)
     polyglot (0.3.3)
-    pry (0.9.12.1)
-      coderay (~> 1.0.5)
-      method_source (~> 0.8)
-      slop (~> 3.4)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -120,11 +83,6 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (10.0.4)
-    rb-fsevent (0.9.3)
-    rb-inotify (0.9.0)
-      ffi (>= 0.5.0)
-    rb-kqueue (0.2.0)
-      ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.4)
@@ -136,7 +94,11 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    slop (3.4.4)
+    sprockets (2.2.2)
+      hike (~> 1.2)
+      multi_json (~> 1.0)
+      rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.7)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
@@ -150,25 +112,20 @@ GEM
     uglifier (2.0.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    watchr (0.7)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   activesupport
-  bson_ext
   coffee-rails (~> 3.2.1)
   coffee-script
-  guard
   jquery-rails
-  lre
   mharris_ext
-  mongo
   rails (= 3.2.13)
   rfusefs
   sass-rails (~> 3.2.3)
-  sprockets (= 2.2.2)!
+  sprockets
   sqlite3
   therubyracer
   uglifier (>= 1.0.3)

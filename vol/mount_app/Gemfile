@@ -37,19 +37,16 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-gem 'therubyracer'
+#gem 'therubyracer'
 
 
 gem 'mharris_ext'
-gem 'lre'
-gem 'guard'
+#gem 'lre'
+#gem 'guard'
 gem 'activesupport'
 gem 'rfusefs'
 
 gem 'coffee-script'
 gem 'therubyracer'
 
-gem 'sprockets','2.2.2', :path => '/mnt/hgfs/Code/read/sprockets'
-
-gem 'mongo'
-gem 'bson_ext'
+gem 'sprockets'

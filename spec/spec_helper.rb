@@ -20,7 +20,7 @@ RSpec.configure do |config|
 
   config.before(:all) do
     File.create("log_special.log","Make #{Time.now}\n")
-    MongoLog.instance.coll.remove
+    #MongoLog.instance.coll.remove
 
     FileUtils.rm_r mount_dir if FileTest.exist?(mount_dir)
     `mkdir #{mount_dir}`
