@@ -36,6 +36,7 @@ Gem::Specification.new do |s|
     "spec/sprockets_fs_spec.rb",
     "spec/support/setup_dir.rb",
     "spec/support/spec_forks.rb",
+    "sprockets_fs.gemspec",
     "vol/env_explore.rb",
     "vol/mongo_test.rb",
     "vol/mount_app/.gitignore",
