@@ -9,10 +9,10 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mike Harris"]
-  s.date = "2013-05-01"
+  s.date = "2013-05-02"
   s.description = "sprockets_fs"
   s.email = "mharris717@gmail.com"
-  s.executables = ["mount_sprockets_rails", "sprockets_fs"]
+  s.executables = ["sprockets_fs"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.rdoc"
@@ -26,10 +26,10 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "VERSION",
-    "bin/mount_sprockets_rails",
     "bin/sprockets_fs",
     "lib/sprockets_fs.rb",
     "lib/sprockets_fs/log.rb",
+    "lib/sprockets_fs/rails.rb",
     "spec/data/parent/double.js.coffee",
     "spec/data/parent/main.js",
     "spec/spec_helper.rb",
@@ -120,8 +120,6 @@ Gem::Specification.new do |s|
       s.add_runtime_dependency(%q<rfusefs>, [">= 0"])
       s.add_runtime_dependency(%q<coffee-script>, [">= 0"])
       s.add_runtime_dependency(%q<therubyracer>, [">= 0"])
-      s.add_runtime_dependency(%q<mongo>, [">= 0"])
-      s.add_runtime_dependency(%q<bson_ext>, [">= 0"])
       s.add_runtime_dependency(%q<sprockets>, [">= 0"])
       s.add_development_dependency(%q<rspec>, ["~> 2.8.0"])
       s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
@@ -135,8 +133,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<rfusefs>, [">= 0"])
       s.add_dependency(%q<coffee-script>, [">= 0"])
       s.add_dependency(%q<therubyracer>, [">= 0"])
-      s.add_dependency(%q<mongo>, [">= 0"])
-      s.add_dependency(%q<bson_ext>, [">= 0"])
       s.add_dependency(%q<sprockets>, [">= 0"])
       s.add_dependency(%q<rspec>, ["~> 2.8.0"])
       s.add_dependency(%q<rdoc>, ["~> 3.12"])
@@ -151,8 +147,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<rfusefs>, [">= 0"])
     s.add_dependency(%q<coffee-script>, [">= 0"])
     s.add_dependency(%q<therubyracer>, [">= 0"])
-    s.add_dependency(%q<mongo>, [">= 0"])
-    s.add_dependency(%q<bson_ext>, [">= 0"])
     s.add_dependency(%q<sprockets>, [">= 0"])
     s.add_dependency(%q<rspec>, ["~> 2.8.0"])
     s.add_dependency(%q<rdoc>, ["~> 3.12"])
