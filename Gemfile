@@ -19,7 +19,4 @@ gem 'rfusefs'
 gem 'coffee-script'
 gem 'therubyracer'
 
-gem 'mongo'
-gem 'bson_ext'
-
 gem 'sprockets'

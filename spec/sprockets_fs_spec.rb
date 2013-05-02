@@ -101,7 +101,7 @@ describe "SprocketsFs" do
     end
   end
 
-  if false
+  if true
   describe "Integration" do
     it "smoke" do
       2.should == 2
@@ -119,16 +119,21 @@ describe 'Rails' do
   include_context "fork"
 
   let(:cmds) do
-    puts 'cmds call'
-    rails = File.expand_path(File.dirname(__FILE__)+"/../vol/mount_app")
-    file = File.expand_path(File.dirname(__FILE__)+"/../vol/mount_app_runner.rb")
+    file = File.expand_path(File.dirname(__FILE__)+"/../bin/sprockets_fs")
 
-    "cd #{rails} && rails runner #{file}"
+    "cd #{app_path} && ruby #{file}"
+  end
+
+  let(:app_path) do
+    File.expand_path(File.dirname(__FILE__)+"/../vol/mount_app")
+  end
+  let(:mount_dir) do
+    "#{app_path}/asset_fs"
   end
 
   def wait_until_mounted
     (0...150).each do 
-      return if Dir["/tmp/mount_rails/*"].size > 0
+      return if Dir["#{app_path}/asset_fs/*"].size > 0
       sleep(0.1)
     end
     raise 'not mounted'
@@ -145,25 +150,25 @@ describe 'Rails' do
   end
 
   it 'read root' do
-    Dir["/tmp/mount_rails/*"].sort.should == %w(images javascripts stylesheets).map { |x| "/tmp/mount_rails/#{x}" }
+    Dir["#{mount_dir}/*"].sort.should == %w(images javascripts stylesheets).map { |x| "#{mount_dir}/#{x}" }
   end
 
   it 'read js folder' do
-    exp = %w(application.js widgets.js widgets.js.coffee main.js).map { |x| "/tmp/mount_rails/javascripts/#{x}" }.sort
-    Dir["/tmp/mount_rails/javascripts/*"].sort.should == exp
+    exp = %w(application.js widgets.js widgets.js.coffee main.js).map { |x| "#{mount_dir}/javascripts/#{x}" }.sort
+    Dir["#{mount_dir}/javascripts/*"].sort.should == exp
   end
 
   it 'read coffee' do
-    File.read("/tmp/mount_rails/javascripts/widgets.js.coffee").strip.should == "double = (x) -> x * 2"
+    File.read("#{mount_dir}/javascripts/widgets.js.coffee").strip.should == "double = (x) -> x * 2"
   end
 
   it 'read js' do
-    File.read("/tmp/mount_rails/javascripts/widgets.js").strip.size.should > 0
+    File.read("#{mount_dir}/javascripts/widgets.js").strip.size.should > 0
     #File.read("/tmp/mount_rails/javascripts/widgets.js").strip.should =~ /double = function/
   end
 
   it 'read js basic' do
-    File.read("/tmp/mount_rails/javascripts/main.js").strip.should == "var abc = 42;"
+    File.read("#{mount_dir}/javascripts/main.js").strip.should == "var abc = 42;"
     #File.read("/tmp/mount_rails/javascripts/widgets.js").strip.should =~ /double = function/
   end
 

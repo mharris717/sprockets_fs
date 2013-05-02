@@ -130,6 +130,6 @@ module SprocketsFS
   end
 end
 
-%w(log).each do |f|
+%w(log rails).each do |f|
   load File.dirname(__FILE__) + "/sprockets_fs/#{f}.rb"
 end

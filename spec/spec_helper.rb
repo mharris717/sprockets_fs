@@ -16,7 +16,7 @@ RSpec.configure do |config|
   mount_dir = "/tmp/test_sp9"
   gem_name = "sprockets_fs"
 
-  #SpecForks.add "ruby ~/code/orig/#{gem_name}/bin/#{gem_name} #{parent_dir} #{mount_dir}"
+  SpecForks.add "ruby ~/code/orig/#{gem_name}/bin/#{gem_name} -p #{parent_dir} -m #{mount_dir}"
 
   config.before(:all) do
     File.create("log_special.log","Make #{Time.now}\n")

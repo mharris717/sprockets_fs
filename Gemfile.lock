@@ -4,9 +4,6 @@ GEM
     activesupport (3.2.13)
       i18n (= 0.6.1)
       multi_json (~> 1.0)
-    bson (1.8.5)
-    bson_ext (1.8.5)
-      bson (~> 1.8.5)
     coderay (1.0.9)
     coffee-script (2.2.0)
       coffee-script-source
@@ -48,8 +45,6 @@ GEM
     mharris_ext (1.7.0)
       facets
       fattr
-    mongo (1.8.5)
-      bson (~> 1.8.5)
     multi_json (1.7.2)
     pry (0.9.12.1)
       coderay (~> 1.0.5)
@@ -94,14 +89,12 @@ PLATFORMS
 
 DEPENDENCIES
   activesupport
-  bson_ext
   bundler (>= 1.0.0)
   coffee-script
   guard
   jeweler (~> 1.8.4)
   lre
   mharris_ext
-  mongo
   rdoc (~> 3.12)
   rfusefs
   rspec (~> 2.8.0)

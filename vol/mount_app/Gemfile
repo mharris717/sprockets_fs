@@ -39,14 +39,4 @@ gem 'jquery-rails'
 
 #gem 'therubyracer'
 
-
-gem 'mharris_ext'
-#gem 'lre'
-#gem 'guard'
-gem 'activesupport'
-gem 'rfusefs'
-
-gem 'coffee-script'
-gem 'therubyracer'
-
-gem 'sprockets'
+gem 'sprockets_fs', :path => "/code/orig/sprockets_fs"
