@@ -1,6 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe "SprocketsFs" do
+  include_context "tmp path"
   include_context "with setup dir"
   let(:dir) do
     SprocketsFS::SprocketsDir.new(:parent_dir => parent_dir)

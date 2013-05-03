@@ -1,7 +1,7 @@
 PATH
   remote: /code/orig/sprockets_fs
   specs:
-    sprockets_fs (0.2.0)
+    sprockets_fs (0.3.0)
       activesupport
       coffee-script
       guard

@@ -15,7 +15,6 @@ RSpec.configure do |config|
     #File.create("log_special.log","Make #{Time.now}\n")
     #MongoLog.instance.coll.remove
 
-    FileUtils.mkdir("/tmp/test_dirs") unless FileTest.exist?("/tmp/test_dirs")
   end
 
 end

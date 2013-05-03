@@ -32,7 +32,7 @@ describe 'Rails' do
     puts "rails smoke"
     #sleep(100000)
     2.should == 2
-    a = Dir["#{mount_dir}/*"].map { |x| x.gsub("/mnt/hgfs/Code/orig/sprockets_fs/vol/mount_app/asset_fs/","") }
+    a = Dir["#{mount_dir}/*"].map { |x| x.gsub("#{app_path}/asset_fs/","") }
     #raise a.inspect
   end
 

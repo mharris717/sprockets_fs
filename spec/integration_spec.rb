@@ -1,6 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe "Integration" do
+  include_context "tmp path"
   include_context "with setup dir"
   include_context "fork"
 
@@ -9,7 +10,7 @@ describe "Integration" do
   end
 
   let(:mount_dir) do
-    res = "/tmp/test_dirs/mounted_#{rand(100000000000000)}"
+    res = "#{tmp_path}/mounted_#{rand(100000000000000)}"
     FileUtils.mkdir res
     res
   end
