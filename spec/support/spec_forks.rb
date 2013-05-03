@@ -15,15 +15,15 @@ class SpecForks
 
   def start!
     commands.uniq.each do |cmd|
+      puts "Starting #{cmd}"
       Bundler.with_clean_env do
         pids[cmd] = fork { exec cmd }
       end
-      sleep(0.1)
+      sleep(0.05)
     end
   end
 
   def kill!
-    #puts "killing"
     pids.values.each do |pid|
       ec "pkill -TERM -P #{pid}", :silent => true
     end

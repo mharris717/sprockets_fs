@@ -10,3 +10,12 @@ def setup_dir(files)
   end
   path
 end
+
+shared_context "with setup dir" do
+  let(:parent_dir) do
+    setup_dir file_hash
+  end
+  before do
+    parent_dir
+  end
+end

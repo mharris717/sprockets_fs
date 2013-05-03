@@ -9,13 +9,13 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mike Harris"]
-  s.date = "2013-05-02"
+  s.date = "2013-05-03"
   s.description = "sprockets_fs"
   s.email = "mharris717@gmail.com"
   s.executables = ["sprockets_fs"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
@@ -23,7 +23,7 @@ Gem::Specification.new do |s|
     "Gemfile",
     "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
     "bin/sprockets_fs",
@@ -32,6 +32,8 @@ Gem::Specification.new do |s|
     "lib/sprockets_fs/rails.rb",
     "spec/data/parent/double.js.coffee",
     "spec/data/parent/main.js",
+    "spec/integration_spec.rb",
+    "spec/rails_spec.rb",
     "spec/spec_helper.rb",
     "spec/sprockets_fs_spec.rb",
     "spec/support/setup_dir.rb",
