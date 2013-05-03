@@ -1,17 +1,16 @@
 PATH
   remote: /code/orig/sprockets_fs
   specs:
-    sprockets_fs (0.1.2)
+    sprockets_fs (0.2.0)
       activesupport
-      bson_ext
       coffee-script
       guard
       lre
       mharris_ext
-      mongo
       rfusefs
       sprockets
       therubyracer
+      tilt (= 1.3.7)
 
 GEM
   remote: https://rubygems.org/
@@ -44,9 +43,6 @@ GEM
       i18n (= 0.6.1)
       multi_json (~> 1.0)
     arel (3.0.2)
-    bson (1.8.5)
-    bson_ext (1.8.5)
-      bson (~> 1.8.5)
     builder (3.0.4)
     coderay (1.0.9)
     coffee-rails (3.2.2)
@@ -95,8 +91,6 @@ GEM
       facets
       fattr
     mime-types (1.23)
-    mongo (1.8.5)
-      bson (~> 1.8.5)
     multi_json (1.7.2)
     polyglot (0.3.3)
     pry (0.9.12.1)
