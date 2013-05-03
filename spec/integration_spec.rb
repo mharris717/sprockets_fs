@@ -15,8 +15,8 @@ describe "Integration" do
   end
 
   let(:cmds) do
-    gem_name = "sprockets_fs"
-    "ruby ~/code/orig/#{gem_name}/bin/#{gem_name} -p #{parent_dir} -m #{mount_dir}"
+    dir = File.expand_path(File.dirname(__FILE__)+"/..")
+    "ruby #{dir}/bin/sprockets_fs -p #{parent_dir} -m #{mount_dir}"
   end
 
   def wait_until_mounted
