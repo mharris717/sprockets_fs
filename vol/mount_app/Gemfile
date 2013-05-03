@@ -39,4 +39,5 @@ gem 'jquery-rails'
 
 #gem 'therubyracer'
 
-gem 'sprockets_fs', :path => "/code/orig/sprockets_fs"
+gem 'sprockets_fs'
+gem 'tilt'
