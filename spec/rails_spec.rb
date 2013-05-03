@@ -37,7 +37,7 @@ describe 'Rails' do
   end
 
   it 'read root' do
-    exp = ["rails.png", "application.js", "main.js", "widgets.js.coffee", "widgets.js", "application.css", "widgets.css.scss"]
+    exp = ["application.js", "main.js", "widgets.js.coffee", "widgets.js", "application.css", "widgets.css.scss"]
     exp += %w(foo.js foo.js.erb)
     exp += ["jquery-ui.js", "jquery-ui.min.js", "jquery.js", "jquery.min.js", "jquery.min.map", "jquery_ujs.js", "coffee-script.js.erb", "coffee-script.js"]
     Dir["#{mount_dir}/*"].sort.should == exp.sort.map { |x| "#{mount_dir}/#{x}" }

@@ -104,7 +104,7 @@ module SprocketsFS
       res
     end
 
-    def unprocessed_parent_file(file)
+    def unprocessed_parent_relative_file(file)
       files.each do |possible_parent|
         if possible_parent.starts_with?(file) && possible_parent.length > file.length
           return possible_parent
@@ -128,7 +128,8 @@ module SprocketsFS
     end
 
     def can_write?(path)
-      base = convert_to_absolute("#{path[1..-1]}.coffee",false) || convert_to_absolute("#{path[1..-1]}.erb",false)
+      #base = convert_to_absolute("#{path[1..-1]}.coffee",false) || convert_to_absolute("#{path[1..-1]}.erb",false)
+      base = unprocessed_parent_relative_file(path[1..-1])
       if base
         false
       else
