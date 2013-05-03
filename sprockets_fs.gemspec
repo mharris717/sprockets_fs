@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = "sprockets_fs"
-  s.version = "0.2.0"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Mike Harris"]
@@ -48,6 +48,7 @@ Gem::Specification.new do |s|
     "vol/mount_app/Rakefile",
     "vol/mount_app/app/assets/images/rails.png",
     "vol/mount_app/app/assets/javascripts/application.js",
+    "vol/mount_app/app/assets/javascripts/foo.js.erb",
     "vol/mount_app/app/assets/javascripts/main.js",
     "vol/mount_app/app/assets/javascripts/widgets.js.coffee",
     "vol/mount_app/app/assets/stylesheets/application.css",
@@ -60,6 +61,7 @@ Gem::Specification.new do |s|
     "vol/mount_app/app/models/.gitkeep",
     "vol/mount_app/app/models/widget.rb",
     "vol/mount_app/app/views/layouts/application.html.erb",
+    "vol/mount_app/app/views/widgets/index.html.erb",
     "vol/mount_app/config.ru",
     "vol/mount_app/config/application.rb",
     "vol/mount_app/config/boot.rb",
@@ -103,7 +105,8 @@ Gem::Specification.new do |s|
     "vol/mount_app/vendor/assets/stylesheets/.gitkeep",
     "vol/mount_app/vendor/plugins/.gitkeep",
     "vol/mount_app_runner.rb",
-    "vol/mount_rails.rb"
+    "vol/mount_rails.rb",
+    "vol/sprockets_explore.rb"
   ]
   s.homepage = "http://github.com/mharris717/sprockets_fs"
   s.licenses = ["MIT"]
