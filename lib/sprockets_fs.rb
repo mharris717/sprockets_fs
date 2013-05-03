@@ -16,21 +16,44 @@ end
 module SprocketsFS
   class SprocketsDir
     include FromHash
-    attr_accessor :parent_dir, :mount_dir
+    attr_accessor :parent_dirs, :mount_dir
+    def parent_dir=(dir)
+      self.parent_dirs = [dir]
+    end
+
     fattr(:env) do
       ML.log "Made Env"
       res = Sprockets::Environment.new
-      res.append_path parent_dir
+      parent_dirs.each do |dir|
+        res.append_path dir
+      end
       res
+    end
+    def convert_to_relative(file)
+      file = file.to_s if file
+      parent_dirs.each do |dir|
+        if file.starts_with?(dir)
+          return file.gsub("#{dir}/","")
+        end
+      end
+      raise "can't convert #{file} to relative, dirs are\n"+parent_dirs.join("\n")
+      nil
+    end
+    def convert_to_absolute(file,safe=true)
+      file = file.to_s if file
+      parent_dirs.each do |dir|
+        base = "#{dir}/#{file}"
+        return base if FileTest.exist?(base)
+      end
+      raise "can't convert #{file} to absolute" if safe
+      nil
     end
     def files
       res = []
       env.each_file do |f|
-        res << f.to_s.gsub("#{parent_dir}/","")
+        res << convert_to_relative(f)
       end
-     # puts "got files #{res.size}"
-      #puts res.inspect
-      res
+      res - ["rails.png"]
     end
     def dirs
       res = []
@@ -57,8 +80,6 @@ module SprocketsFS
     end
 
     def contents(path)
-     # puts "contents for #{path} #{env.class}"
-      #puts env.inspect
       all = files
       res = if path == '/'
         all.select { |x| x.split("/").size == 1 } + dirs.select { |x| x.split("/").size == 1 }
@@ -83,31 +104,23 @@ module SprocketsFS
       res
     end
 
+    def unprocessed_parent_file(file)
+      files.each do |possible_parent|
+        if possible_parent.starts_with?(file) && possible_parent.length > file.length
+          return possible_parent
+        end
+      end
+      nil
+    end
+
     def read_file(path)
       ML.log("path #{path}") do
-        base = "#{parent_dir}#{path}"
-        res = if FileTest.exist?(base)
-          puts "Read_file #{path} exists"
+        base = convert_to_absolute(path[1..-1],false)
+        if base
           File.read(base).strip
-
         else
-          asset = env.find_asset(path[1..-1])
-         # ML.log "asset type: #{asset.content_type} #{asset.inspect}"
-          text = asset.to_s.strip
-
-          if text.blank?
-            self.env!
-            p = path[1..-1]+".coffee"
-            puts "finding #{path} #{p} with coffee added"
-            text = env.find_asset(p).to_s.strip
-            puts "got text #{text}"
-          end
-
-          text
-
+          env.find_asset(path[1..-1]).to_s.strip
         end
-        #puts "Read_file #{path} #{res}"
-        res
       end
     end
     def size(path)
@@ -115,8 +128,8 @@ module SprocketsFS
     end
 
     def can_write?(path)
-      base = "#{parent_dir}#{path}.coffee"
-      if FileTest.exist?(base)
+      base = convert_to_absolute("#{path[1..-1]}.coffee",false) || convert_to_absolute("#{path[1..-1]}.erb",false)
+      if base
         false
       else
         true
@@ -124,7 +137,15 @@ module SprocketsFS
     end
 
     def write_to(path,contents)
-      full = "#{parent_dir}#{path}"
+      full = convert_to_absolute(path[1..-1],false)
+      if !full
+        if parent_dirs.size == 1
+          full = "#{parent_dirs.first}#{path}"
+        else
+          raise "can't write"
+        end
+      end
+
       File.create full, contents
     end
   end

@@ -10,7 +10,6 @@ PATH
       rfusefs
       sprockets
       therubyracer
-      tilt (= 1.3.7)
 
 GEM
   remote: https://rubygems.org/

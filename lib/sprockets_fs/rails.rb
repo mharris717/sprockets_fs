@@ -31,12 +31,16 @@ module SprocketsFS
     end
 
     def mount_rails!
-      FileUtils.mkdir(mount_dir) unless FileTest.exist?(mount_dir)
+      if FileTest.exist?(mount_dir) 
+        ec "rm -r #{mount_dir}/*" if Dir["#{mount_dir}/*"].size > 0
+      else
+        FileUtils.mkdir(mount_dir)
+      end 
 
       load "#{parent_dir}/config/environment.rb"
 
       env = app_obj.assets
-      dir = SprocketsFS::SprocketsDir.new(:parent_dir => "#{parent_dir}/app/assets", :env => env, :mount_dir => mount_dir)
+      dir = SprocketsFS::SprocketsDir.new(:parent_dirs => env.paths, :env => env, :mount_dir => mount_dir)
 
       FuseFS.start(dir,mount_dir)
     end
